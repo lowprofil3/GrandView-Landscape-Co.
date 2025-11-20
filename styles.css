@@ -43,24 +43,32 @@ a:hover,
   background: rgba(245, 240, 233, 0.95);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid rgba(18, 34, 23, 0.08);
+  box-shadow: 0 12px 24px rgba(12, 35, 20, 0.08);
 }
 
 .logo-area {
   display: flex;
   align-items: center;
+  gap: 1rem;
+  flex: 1;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.logo-lockup {
+  display: inline-flex;
+  align-items: center;
   gap: 0.75rem;
 }
 
-.logo-mark {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--white);
-  background: linear-gradient(135deg, var(--green-700), var(--green-500));
-  border-radius: 12px;
+.logo-image {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  background: var(--white);
+  border: 1px solid rgba(18, 34, 23, 0.08);
+  border-radius: 14px;
+  padding: 0.4rem;
   box-shadow: var(--shadow-soft);
 }
 
@@ -74,6 +82,20 @@ a:hover,
   margin: 0;
   color: var(--text-muted);
   font-size: 0.9rem;
+}
+
+.logo-divider {
+  width: 1px;
+  align-self: stretch;
+  background: linear-gradient(180deg, transparent, rgba(18, 34, 23, 0.2), transparent);
+  opacity: 0.6;
+}
+
+.logo-promise {
+  margin: 0;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
 .main-nav {
@@ -116,12 +138,28 @@ main {
   padding: 2.5rem;
   border-radius: 24px;
   box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(18, 34, 23, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(47, 138, 68, 0.08), transparent 55%);
 }
 
 .hero-text h1 {
   margin: 0 0 0.5rem;
   font-size: clamp(2rem, 3vw + 1rem, 3rem);
   color: var(--green-900);
+}
+
+.hero-text {
+  position: relative;
+  z-index: 1;
 }
 
 .subheadline {
@@ -175,6 +213,8 @@ main {
 .hero-panel {
   display: grid;
   gap: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 .accent-card {
