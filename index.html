@@ -22,6 +22,10 @@
       <div class="logo-divider" aria-hidden="true"></div>
       <p class="logo-promise">Clean edges. Fair prices. Friendly service.</p>
     </div>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="hamburger" aria-hidden="true"></span>
+    </button>
     <div class="nav-wrapper">
       <nav class="main-nav" aria-label="Main navigation">
         <a href="#home">Home</a>
@@ -191,5 +195,23 @@
   <footer class="footer">
     <p>© 2024 GrandView Landscape Co. Proudly teen-owned and ready to help.</p>
   </footer>
+
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const navWrapper = document.querySelector('.nav-wrapper');
+
+    navToggle?.addEventListener('click', () => {
+      const isOpen = navWrapper.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!navWrapper || !navToggle) return;
+      if (!navWrapper.contains(event.target) && !navToggle.contains(event.target)) {
+        navWrapper.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
 </body>
 </html>
