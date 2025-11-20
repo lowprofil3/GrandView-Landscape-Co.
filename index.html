@@ -24,7 +24,11 @@
     </div>
     <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
       <span class="sr-only">Toggle navigation</span>
-      <span class="hamburger" aria-hidden="true"></span>
+      <span class="hamburger" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
     </button>
     <div class="nav-wrapper">
       <nav class="main-nav" aria-label="Main navigation">
@@ -203,6 +207,7 @@
     navToggle?.addEventListener('click', () => {
       const isOpen = navWrapper.classList.toggle('open');
       navToggle.setAttribute('aria-expanded', String(isOpen));
+      navToggle.classList.toggle('is-open', isOpen);
     });
 
     document.addEventListener('click', (event) => {
@@ -210,6 +215,15 @@
       if (!navWrapper.contains(event.target) && !navToggle.contains(event.target)) {
         navWrapper.classList.remove('open');
         navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.classList.remove('is-open');
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && navWrapper?.classList.contains('open')) {
+        navWrapper.classList.remove('open');
+        navToggle?.setAttribute('aria-expanded', 'false');
+        navToggle?.classList.remove('is-open');
       }
     });
   </script>
