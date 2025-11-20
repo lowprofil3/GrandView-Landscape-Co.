@@ -507,8 +507,9 @@ main {
     width: auto;
     flex-direction: column;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.65rem;
     text-align: center;
+    max-width: calc(100% - 64px);
   }
 
   .logo-lockup {
@@ -524,6 +525,11 @@ main {
   .logo-promise {
     line-height: 1.4;
     padding: 0 1rem;
+    margin-top: 0.1rem;
+    max-width: 260px;
+    width: min(260px, 88vw);
+    white-space: normal;
+    text-align: center;
   }
 
   .nav-toggle {
